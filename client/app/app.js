@@ -7,6 +7,7 @@ angular.module('jetSkyApp', [
 	'ngSanitize',
     'ui.router'
   ])
+  .constant('API','http://localhost:25956/JetSky')
   .config(function($urlRouterProvider, $locationProvider) {
     $urlRouterProvider.otherwise('/');
 
