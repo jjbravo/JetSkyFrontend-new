@@ -1,5 +1,7 @@
 <div class="container">
 	<div class="row">
+	<div ng-show="vm.message" class="alert alert-success" role="alert">{{vm.message}}</div>
+
 		<div class="col-md-8">
 			<div class="col-sm-6 col-md-4" ng-repeat="item in vm.motosAcuaticas">
 		    <div class="thumbnail">
@@ -7,7 +9,7 @@
 		      <div class="caption">
 		        <h3>{{item.marca}}</h3>
 		        <p>{{item.descripcion}}</p>
-		        <p><a href="#" class="btn btn-primary" role="button">Rentar</a></p>
+		        <p><a ng-click="vm.selectedMoto(item)" class="btn btn-primary" role="button">Rentar</a></p>
 		      </div>
 		    </div>
 		  </div>
@@ -36,12 +38,27 @@
 
 				<div class="form-group">
 					<label for="">Plan</label>
-					<select class="form-control" name="" id="" ng-model="vm.alquiler.idPlan.id">
+					<select 
+					class="form-control" 
+					ng-change="vm.selectedPlan()"
+					ng-model="vm.alquiler.idPlan.id">
 						<option  ng-value="item.id" ng-repeat="item in vm.planes">{{item.nombrePlan}}</option>
 					</select>
 				</div>
-
-
+				<div class="form-group">
+					<label for="">Empleado</label>
+					<select class="form-control" name="" id="" ng-model="vm.alquiler.idEmpleado.id">
+						<option  ng-value="item.id" ng-repeat="item in vm.empleados">{{item.nombres}} {{item.apellidos}}</option>
+					</select>
+				</div>
+				<div>
+					<h3>Moto: {{vm.selectMoto.marca}}</h3>
+					<p>{{vm.selectMoto.descripcion}}</p>
+				</div>
+				<div>
+				<h3>Descuento: {{vm.descuento}}</h3>
+					<h2>Total a pagar: {{vm.alquiler.totalPagar}}</h2>
+				</div>
 					
 				<button class="btn btn-success" type="sumbit">Guardar</button>
 			</form>
